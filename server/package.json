@@ -16,7 +16,9 @@
     "eslint": "^4.19.1",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "sequelize": "^4.37.6",
+    "sqlite3": "^4.0.0"
   },
   "devDependencies": {
     "eslint-config-standard": "^11.0.0",
