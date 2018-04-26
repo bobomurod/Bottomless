@@ -1,4 +1,4 @@
-module.export = (app) => {
+module.exports = (app) => {
   app.post('/register', (req, res) => {
     res.send({
       message1: `Hello ${req.body.email}! your user was registred`,

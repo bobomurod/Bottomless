@@ -1,4 +1,4 @@
-module.export = (sequelize, Datatypes) => 
+module.exports = (sequelize, DataTypes) => 
   sequelize.define('User', {
     email: {
       type: DataTypes.STRING,

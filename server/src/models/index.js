@@ -24,4 +24,4 @@ fs
 db.sequelize = sequelize
 db.sequelize = Sequelize
 
-module.export = db
+module.exports = db
