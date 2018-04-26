@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 module.exports = {
   port: process.env.PORT || 8081,
   db: {
@@ -6,6 +8,7 @@ module.exports = {
     password: process.env.DB_PASS || 'dimadb',
     options: {
       dialect: process.env.DIALECT || 'sqlite',
+      operatorsAliases: Op,
       host: process.env.HOST || 'localhost',
       storage: './Bottomless.sqlite'
     }

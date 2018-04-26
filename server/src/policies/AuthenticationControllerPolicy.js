@@ -1,7 +1,7 @@
 const Joi = require('joi')
 
 module.exports = {
-    reqister (req, res, next) {
+    register (req, res, next) {
         const schema = {
             email: Joi.string().email(),
             password: Joi.string().regex(
@@ -9,7 +9,7 @@ module.exports = {
             )
         }
 
-        const {error, value} = Joi.validate)req.body, schema)
+        const {error, value} = Joi.validate(req.body, schema)
         if (error){
             switch (error.details[0].context.key) {
                 case 'email':
@@ -27,7 +27,7 @@ module.exports = {
                         error: 'Invalid registration information'
                     })
             }
-        }else{
+        } else {
             next()
         }
     }
