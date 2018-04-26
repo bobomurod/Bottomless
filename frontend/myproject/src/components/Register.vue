@@ -1,24 +1,20 @@
 <template>
   <v-layout column>
-    <v-flex xs6 offset-xs3>
-      <div class="white elevation-3">
-        <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
-            <div class="pl-6 pr-6 pt-2 pb-2">
-            <input type="email" name="email" v-model="email" placeholder="email" />
+    <v-flex xs6 offset-xs1>
+      <panel title="Register">
+        <form name="Bottomless" autocomplete="off">
+          <v-text-field label="Email" v-model="email"></v-text-field>
+          <br>
+          <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
+            </form>
             <br>
-            <input type="password" name="password" v-model="password" placeholder="password" />
+            <div class="danger-alert" v-html="error" />
+            <div class="danger-alert" v-html="investText" />
             <br>
-            <div class="error" v-html="error" />
-            <br>
-            <div class="investText" v-html="investText" />
-            <br>
-            <button @click="register">Register me</button>
+            <v-btn dark class="cyan" @click="register">Register me</v-btn>
             <br>
             <button @click="invest">Invest here</button>
-            </div>
-      </div>
+      </panel>
     </v-flex>
   </v-layout>
  </template>
