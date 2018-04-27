@@ -8,8 +8,9 @@
           <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
             </form>
             <br>
-            <div class="danger-alert" v-html="error" />
+            <div class="danger-alert" v-html="status" />
             <div class="danger-alert" v-html="investText" />
+            <div class="danger-alert" v-html="st" />            
             <br>
             <v-btn dark class="cyan" @click="register">Register me</v-btn>
             <br>
@@ -33,10 +34,11 @@ export default {
   methods: {
     async register () {
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
+          this.st = 'good'
       } catch (error) {
         this.error = error.response.data.error
       }
