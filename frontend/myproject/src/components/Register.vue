@@ -1,8 +1,10 @@
 <template>
-<v-container>
-  <v-layout column>
+  <v-layout d-flex>
     <v-flex xs6 offset-xs1>
       <panel title="Register">
+        <v-toolbar dense flat class="cyan">
+        <v-toolbar-title>Registration</v-toolbar-title>
+        </v-toolbar>
         <form name="Bottomless" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
           <br>
@@ -19,7 +21,6 @@
       </panel>
     </v-flex>
   </v-layout>
-</v-container>
  </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
