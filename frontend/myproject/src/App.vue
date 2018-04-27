@@ -37,8 +37,8 @@ export default {
   margin-top: 70px;
 }
 
-.input-group-text-field input {
-  border-bottom: 1px solid black;
+.input-group--text-field input {
+  border-bottom: 2px solid black;
 }
 
 </style>

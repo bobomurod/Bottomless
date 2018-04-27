@@ -2,8 +2,9 @@
   <v-layout d-flex>
     <v-flex xs6 offset-xs1>
       <panel title="Register">
-        <v-toolbar dense flat class="cyan">
+        <v-toolbar dense flat class="cyan" dark>
         <v-toolbar-title>Registration</v-toolbar-title>
+        
         </v-toolbar>
         <form name="Bottomless" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
