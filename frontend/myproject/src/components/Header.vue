@@ -22,6 +22,9 @@
     <v-btn flat dark @click="navigateTo({name: 'register'})">
         Sign up
     </v-btn>
+    <v-btn flat dark @click="navigateTo({name: 'login'})">
+        Sign in
+    </v-btn>
       
     </v-toolbar-items>
     </v-toolbar>
