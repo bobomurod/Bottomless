@@ -13,9 +13,7 @@ module.exports = (app) => {
   //     message2: `And your password is ${req.body.password}, keep it in safe pleace.`
   //   })
   // })
-},
-{
+
   app.post('/login',
-  AuthenticationControllerPolicy.login,
   AuthenticationController.login)
 }

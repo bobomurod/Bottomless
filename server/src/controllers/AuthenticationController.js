@@ -26,6 +26,22 @@ module.exports = {
                     error: 'The login info was incorrect'
                 })
             }
+            const isPasswordValid = password === user.password
+            if (!isPasswordValid) {
+                return res.status(403).send({
+                    error: 'Pass not match'
+                })
+            }
+            const userJson = user.toJSON()
+            res.send({
+                user: userJson
+            })
         }
+            catch (err) {
+                res.status(500).send({
+                    error: 'invalid login info'
+                })
+            }
+        
     }
 }
