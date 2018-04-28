@@ -12,11 +12,11 @@
           <v-text-field label="Password" type="password" v-model="password" autocomplete="new-password"></v-text-field>
             </form>
             <br>
-            <div class="danger-alert" v-html="status" />
+            <div class="danger-alert" v-html="error" />
             <div class="danger-alert" v-html="investText" />
             <div class="danger-alert" v-html="st" />            
             <br>
-            <v-btn dark class="cyan" @click="login">Log me in</v-btn>
+            <v-btn dark class="amber" @click="login">Log me in</v-btn>
             <br>
             <button @click="invest">Invest here</button>
       </panel>
@@ -38,7 +38,7 @@ export default {
   methods: {
     async login () {
       try {
-         await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
