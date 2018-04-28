@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <v-layout d-flex>
     <v-flex xs6 offset-xs1>
@@ -42,7 +43,6 @@ export default {
           email: this.email,
           password: this.password
         })
-          this.st = 'good'
       } catch (error) {
         this.error = error.response.data.error
       }
