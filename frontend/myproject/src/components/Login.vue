@@ -5,7 +5,6 @@
       <panel title="Register">
         <v-toolbar dense flat class="amber" dark>
         <v-toolbar-title>You can log in</v-toolbar-title>
-        
         </v-toolbar>
         <form name="Bottomless" autocomplete="off">
           <v-text-field label="Email" v-model="email"></v-text-field>
@@ -43,6 +42,8 @@ export default {
           email: this.email,
           password: this.password
         })
+        console.log(response.data.user)
+        this.error = response.status+'\n'+response.data.user.email
       } catch (error) {
         this.error = error.response.data.error
       }
