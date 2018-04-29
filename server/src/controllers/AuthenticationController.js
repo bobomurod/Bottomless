@@ -36,7 +36,7 @@ module.exports = {
                     error: 'The login info was incorrect'
                 })
             }
-            const isPasswordValid = password === user.password
+            const isPasswordValid = await user.comparePassword(password)
             if (!isPasswordValid) {
                 return res.status(403).send({
                     error: 'Pass not match'
