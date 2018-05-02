@@ -2,7 +2,6 @@
 <template>
   <v-layout d-flex>
     <v-flex xs6 offset-xs1>
-      <panel title="Register">
         <v-toolbar dense flat class="amber" dark>
         <v-toolbar-title>You can log in</v-toolbar-title>
         </v-toolbar>
@@ -14,12 +13,10 @@
             <br>
             <div class="danger-alert" v-html="error" />
             <div class="danger-alert" v-html="investText" />
-            <div class="danger-alert" v-html="st" />            
             <br>
             <v-btn dark class="amber" @click="login">Log me in</v-btn>
             <br>
             <button @click="invest">Invest here</button>
-      </panel>
     </v-flex>
   </v-layout>
  </template>
@@ -43,7 +40,7 @@ export default {
           password: this.password
         })
         console.log(response.data.user)
-        this.error = response.status+'\n'+response.data.user.email
+        this.error = response.status + '\n' + response.data.user.email
       } catch (error) {
         this.error = error.response.data.error
       }

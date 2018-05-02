@@ -12,7 +12,6 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      
             <router-link to="register">
                   <v-btn flat dark>
                 Sign up
