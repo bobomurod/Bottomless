@@ -3,7 +3,6 @@
 <template>
   <v-layout d-flex>
     <v-flex xs6 offset-xs1>
-      <panel title="Register">
         <v-toolbar dense flat class="cyan" dark>
         <v-toolbar-title>Registration</v-toolbar-title>
         </v-toolbar>
@@ -15,12 +14,10 @@
             <br>
             <div class="danger-alert" v-html="error" />
             <div class="danger-alert" v-html="investText" />
-            <div class="danger-alert" v-html="st" />
             <br>
             <v-btn dark class="cyan" @click="register">Register me</v-btn>
             <br>
             <button @click="invest">Invest here</button>
-      </panel>
     </v-flex>
   </v-layout>
  </template>
@@ -39,7 +36,7 @@ export default {
   methods: {
     async register () {
       try {
-        const response = await AuthenticationService.register({
+        await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
