@@ -12,27 +12,20 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-            <router-link to="register">
-                  <v-btn flat dark>
-                Sign up
-                  </v-btn>
-                </router-link>
-    
     <v-btn flat dark @click="navigateTo({name: 'register'})">
         Sign up
     </v-btn>
     <v-btn flat dark @click="navigateTo({name: 'login'})">
         Sign in
     </v-btn>
-      
     </v-toolbar-items>
     </v-toolbar>
  </template>
 <script>
 export default {
-    methods: {
-        navigateTo (route) {
-            this.$router.push(route)
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
         }
     }
 }
