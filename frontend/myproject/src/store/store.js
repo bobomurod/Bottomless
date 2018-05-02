@@ -7,16 +7,23 @@ export default new Vuex.Store({
   strict: true,
   state: {
     token: null,
- } ,
- mutation: {
+    user: null
+ },
+ mutations: {
     setToken (state, token) {
         state.token = token
+    },
+    
+    setUser (state, user) {
+        state.user = user
     }
  },
  actions: {
      setToken ({commit}, token) {
          commit('setToken', token)
-     }
- }
+    },
+    setUser ({commit}, user) {
+        commit('setUSer', user)
+    }
+  }
 })
- 
