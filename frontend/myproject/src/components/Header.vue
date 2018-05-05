@@ -6,7 +6,7 @@
         </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>
-        <v-btn 
+        <v-btn
         flat dark>
             myButton
         </v-btn>
@@ -33,6 +33,9 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
     }
   }
 }
