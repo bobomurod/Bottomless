@@ -5,6 +5,8 @@ import Register from '@/components/Register'
 import Investing from '@/components/Investing'
 import Homepage from '@/components/Homepage'
 import Login from '@/components/Login'
+import WithdrawPage from '@/components/WithdrawPage'
+import Dashboard from '@/components/Dashboard'
 
 Vue.use(Router)
 

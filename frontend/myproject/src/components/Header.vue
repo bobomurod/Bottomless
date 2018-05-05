@@ -13,6 +13,14 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
+         <v-btn v-if="$store.state.isUserLoggedIn"
+    flat dark @click="navigateTo({name: 'dashboard'})">
+        Dashboard
+    </v-btn>
+    <v-btn v-if="$store.state.isUserLoggedIn"
+    flat dark @click="navigateTo({name: 'withdrawPage'})">
+        Withdraw
+    </v-btn>
     <v-btn v-if="!$store.state.isUserLoggedIn"
     flat dark @click="navigateTo({name: 'register'})">
         Sign up
@@ -37,9 +45,9 @@ export default {
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
-      //TODO: redirect to homepage
+      // TODO: redirect to homepage
       this.$router.push({
-          name: 'homepage'
+        name: 'homepage'
       })
     }
   }
