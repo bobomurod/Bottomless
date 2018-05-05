@@ -22,7 +22,6 @@
  </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-import { constants } from '../../../../../WavesGUI/node_modules/@types/fs-extra';
 export default {
   data () {
     return {
@@ -40,9 +39,11 @@ export default {
           email: this.email,
           password: this.password
         })
+        console.log(response.data.token)
         this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUSer', response.data.user)
+        this.$store.dispatch('setUser', response.data.user)
         console.log(response.data.user)
+        console.log(response.data.user.password)
         this.error = response.status + '\n' + response.data.user.email
       } catch (error) {
         this.error = error.response.data.error
