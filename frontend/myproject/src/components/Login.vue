@@ -22,6 +22,7 @@
  </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import { constants } from '../../../../../WavesGUI/node_modules/@types/fs-extra';
 export default {
   data () {
     return {
