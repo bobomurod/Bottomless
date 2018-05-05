@@ -13,6 +13,7 @@
             </form>
             <br>
             <div class="danger-alert" v-html="error" />
+            <div class="danger-alert" v-html="status" />
             <div class="danger-alert" v-html="investText" />
             <br>
             <v-btn dark class="cyan" @click="register">Register me</v-btn>
@@ -29,7 +30,8 @@ export default {
       email: '',
       password: '',
       error: null,
-      investText: null
+      investText: null,
+      status: null
 
     }
   },
@@ -40,6 +42,7 @@ export default {
           email: this.email,
           password: this.password
         })
+        this.status = response.data.token
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         // this.st = 'good'
