@@ -22,7 +22,7 @@
         Sign in
     </v-btn>
     <v-btn v-if="$store.state.isUserLoggedIn"
-    flat dark @click="navigateTo({name: 'login'})">
+    flat dark @click="logout">
         Sign out
     </v-btn>
     </v-toolbar-items>
@@ -36,6 +36,11 @@ export default {
     },
     logout () {
       this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      //TODO: redirect to homepage
+      this.$router.push({
+          name: 'homepage'
+      })
     }
   }
 }
