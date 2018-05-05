@@ -34,6 +34,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/withdrawPage',
+      name: 'withdrawPage',
+      component: WithdrawPage
     }
   ]
 })
