@@ -2,6 +2,8 @@ const AuthenticationController = require('./controllers/AuthenticationController
 
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 
+const TestController = require('./controllers/TestController')
+
 
 module.exports = (app) => {
   app.post('/register', 
@@ -16,4 +18,22 @@ module.exports = (app) => {
 
   app.post('/login',
   AuthenticationController.login)
+  
+  // Next is The Example page created for show purpose only
+
+  app.post('/shows',
+  TestController.show)
+
+  // Next is for show request as json before send to db
+  // This will return request as json in response
+
+  app.post('/return',
+  TestController.ret)
+
+  // Next route for inserting data to DB
+
+  app.post('/insert',
+  TestController.insert)
+
+
 }

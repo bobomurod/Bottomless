@@ -12,6 +12,19 @@ app.use(cors())
 
 require('./routes')(app)
 
+function setData (req, res) {
+  Example.create({
+    text1: 'hello'
+  })
+}
+
+function reg (req, res) {
+  User.create({
+    email: 'email@email',
+    password: '11'
+  })
+}
+
 sequelize.sync()
   .then(() => {
     app.listen(config.port)
