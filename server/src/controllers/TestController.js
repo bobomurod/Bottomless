@@ -36,5 +36,14 @@ module.exports = {
     } catch(err) {
         res.send(err)
         }
-    }
+    },
+  async select (request, response) {
+      try {
+          const example = await sequelize.query("SELECT * FROM `Examples`", {
+              type: sequelize.QueryTypes.SELECT
+          }).then(examples => {})
+      } catch (err) {
+      res.send(err)
+  } 
+  }
 }

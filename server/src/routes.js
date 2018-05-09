@@ -38,4 +38,9 @@ module.exports = (app) => {
   app.post('/reg',
   TestController.reg)
 
+  // Next route for show selected data from db
+
+  app.post('/select',
+  TestController.select)
+
 }
