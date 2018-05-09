@@ -18,12 +18,15 @@ function setData (req, res) {
   })
 }
 
-function reg (req, res) {
-  User.create({
-    email: 'email@email',
-    password: '11'
-  })
-}
+// async reg (req, res) {
+//   try {
+//     const exam = await User.create({
+//     email: 'email@email',
+//     password: '11'
+//   })} catch(err) {
+//     res.send(err)
+//   }
+// }
 
 sequelize.sync()
   .then(() => {

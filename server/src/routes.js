@@ -21,7 +21,7 @@ module.exports = (app) => {
   
   // Next is The Example page created for show purpose only
 
-  app.post('/shows',
+  app.get('/shows',
   TestController.show)
 
   // Next is for show request as json before send to db
@@ -35,5 +35,7 @@ module.exports = (app) => {
   app.post('/insert',
   TestController.insert)
 
+  app.get('/reg',
+  TestController.reg)
 
 }

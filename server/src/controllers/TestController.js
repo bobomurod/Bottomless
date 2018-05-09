@@ -1,10 +1,6 @@
 const {Example} = require('../models/')
 const config = require('../config/config')
 
-// module.exports = {
-    
-// }
-
 
 module.exports = {
     show (req, res) {
@@ -24,5 +20,15 @@ async insert (req, res) {
     } catch(err) {
         res.send(err)
     }
-}
-}
+  },
+  async reg (res,req) {
+      try {
+          const user = await User.create({
+              email: 'email@email',
+              password: '11'
+          })
+        } catch(err) {
+            res.send(err)
+        }
+      }
+  }
