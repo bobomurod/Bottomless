@@ -12,11 +12,11 @@ app.use(cors())
 
 require('./routes')(app)
 
-function setData (req, res) {
-  Example.create({
-    text1: 'hello'
-  })
-}
+// function setData (req, res) {
+//   Example.create({
+//     text1: 'hello'
+//   })
+// }
 
 // async reg (req, res) {
 //   try {
