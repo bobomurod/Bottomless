@@ -15,18 +15,24 @@ module.exports = {
   },
   async insert (req, res) {
     try {
+        if (req.body.text1 != null) {
         const example = await Example.create(req.body)
+        console.log(req.body)
         res.send(example.toJSON())
+        } else {
+            res.send('we dont need to write null to db')
+        }
     } catch(err) {
         res.send(err)
     }
   },
-  async reg (res,req) {
+  async reg (req, res) {
     try {
         const user = await User.create({
-            email: 'email@email',
-            password: '11'
+            email: "hello2@hm",
+            password: "11"
         })
+        res.send(user.toJSON())
     } catch(err) {
         res.send(err)
         }

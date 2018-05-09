@@ -22,11 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     password: DataTypes.STRING
-  }, {
+  }, 
+  {
     hooks: {
       
       beforeSave: hashPassword
-  }
+    }
   })
   User.prototype.comparePassword = function (password) {
     return bcrypt.compareAsync(password, this.password)

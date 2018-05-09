@@ -35,7 +35,7 @@ module.exports = (app) => {
   app.post('/insert',
   TestController.insert)
 
-  app.get('/reg',
+  app.post('/reg',
   TestController.reg)
 
 }
