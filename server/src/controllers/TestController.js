@@ -37,13 +37,18 @@ module.exports = {
         res.send(err)
         }
     },
-  async select (request, response) {
+  async select (req, res) {
       try {
-          const example = await sequelize.query("SELECT * FROM `Examples`", {
-              type: sequelize.QueryTypes.SELECT
-          }).then(examples => {})
+          const example = await Example.findOne({
+            //   attributes: ['text1'],
+              where: {
+                  id: 28
+              }
+          }) 
+          // .then(function(result){console.log(result); return result})
+             res.send(example.toJSON())
       } catch (err) {
-      res.send(err)
-  } 
+          res.send(err)
+      }
   }
 }
