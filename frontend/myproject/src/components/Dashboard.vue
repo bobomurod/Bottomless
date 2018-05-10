@@ -84,6 +84,9 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
+import InvestingService from '@/services/InvestingService'
+
 export default {
   name: 'HelloWorld',
   data () {

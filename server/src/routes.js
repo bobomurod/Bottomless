@@ -4,6 +4,8 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 
 const TestController = require('./controllers/TestController')
 
+const InvestingController = require('./controllers/InvestingController')
+
 
 module.exports = (app) => {
   app.post('/register', 
@@ -18,6 +20,12 @@ module.exports = (app) => {
 
   app.post('/login',
   AuthenticationController.login)
+
+  app.post('/dashboard',
+  InvestingController.dashboard)
+
+  app.post('/profile',
+  AutenticationController.profileEdit)
   
   // Next is The Example page created for show purpose only
 
