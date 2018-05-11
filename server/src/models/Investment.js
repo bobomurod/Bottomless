@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const Investment = sequelize.define('Investment', {
-        email: DataType.STRING,
-        invested: DataType.BOOLEAN,
-        tokenAmount: DataType.NUMBER,
-        bitcoinAmount: DataType.NUMBER,
-        ethereumAmount: Datatype.NUMBER,
-        isWithdraw: DataType.BOOLEAN,
-        bonusPersent: DataType.NUMBER
+        email: DataTypes.STRING,
+        invested: DataTypes.BOOLEAN,
+        tokenAmount: DataTypes.INTEGER,
+        bitcoinAmount: DataTypes.INTEGER,
+        ethereumAmount: DataTypes.INTEGER,
+        isWithdraw: DataTypes.BOOLEAN,
+        bonusPersent: DataTypes.INTEGER
     })
 }
