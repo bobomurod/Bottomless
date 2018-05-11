@@ -10,6 +10,7 @@
         >
           Core Docs
         </a>
+        <button @click="getBitcoinPrice">get price</button>
       </li>
       <br>
       <li>
@@ -69,8 +70,20 @@ export default {
     return {
       msg: 'This is fucking Dashboard'
     }
+  },
+  methods: {
+  async getBitcoinPrice () {
+    try {
+    const response = await InvestingService.getBitcoinPrice()
+    console.log(response.data)
+  } catch (err) {
+    console.log(err)
+  }
   }
 }
+}
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
