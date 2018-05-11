@@ -24,8 +24,8 @@ module.exports = (app) => {
   app.post('/dashboard',
   InvestingController.getBitcoinPrice)
 
-  app.post('/profile',
-  AutenticationController.profileEdit)
+  // app.post('/profile',
+  // AuthenticationController.profileEdit)
   
   // Next is The Example page created for show purpose only
 

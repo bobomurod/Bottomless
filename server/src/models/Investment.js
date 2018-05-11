@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Investment = sequelize.define('Investment', {
+      
         email: DataTypes.STRING,
         invested: DataTypes.BOOLEAN,
         tokenAmount: DataTypes.INTEGER,
@@ -8,4 +9,5 @@ module.exports = (sequelize, DataTypes) => {
         isWithdraw: DataTypes.BOOLEAN,
         bonusPersent: DataTypes.INTEGER
     })
+    return Investment
 }

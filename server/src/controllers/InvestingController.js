@@ -1,4 +1,4 @@
-const {User} = require('..models')
+const {User} = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 const request = require('request')
@@ -14,8 +14,9 @@ module.exports = {
                 , function(error, response, body) {
                     if (!error && response.statusCode == 200) {
                         var jsonArr = JSON.parse(body);
-                        console.log(jsonArr.data.quotes.USD.price)
-                        res.send(jsonArr)
+                        var btcPrice = jsonArr.data.quotes.USD.price
+                        console.log(btcPrice)
+                        res.send("BTC-USD "+btcPrice)
                     }
                 })
         } catch (err) {
@@ -30,10 +31,13 @@ module.exports = {
                 , function(error, response, body) {
                     if (!error && response.statusCode == 200) {
                         var jsonArr = JSON.parse(body);
-                        console.log(jsonArr.data.quotes.USD.price)
-                        res.send(jArr)
+                        var ethPrice = jsonArr.data.quotes.USD.price
+                        console.log(ethPrice)
+                        res.send("ETH-USD " + ethPrice)
                     }
                 })
+        } catch (err) {
+            res.send(err)
         }
     }    
 
