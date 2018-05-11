@@ -15,6 +15,7 @@ module.exports = {
                     if (!error && response.statusCode == 200) {
                         var jsonArr = JSON.parse(body);
                         console.log(jsonArr.data.quotes.USD.price)
+                        res.send(jsonArr)
                     }
                 })
         } catch (err) {
@@ -30,15 +31,11 @@ module.exports = {
                     if (!error && response.statusCode == 200) {
                         var jsonArr = JSON.parse(body);
                         console.log(jsonArr.data.quotes.USD.price)
+                        res.send(jArr)
                     }
                 })
         }
-    }
-
-
-
-
-
+    }    
 
 
 }
