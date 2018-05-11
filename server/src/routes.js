@@ -22,7 +22,7 @@ module.exports = (app) => {
   AuthenticationController.login)
 
   app.post('/dashboard',
-  InvestingController.getBitcoinPrice)
+  InvestingController.getCryptoPrice)
 
   // app.post('/profile',
   // AuthenticationController.profileEdit)
