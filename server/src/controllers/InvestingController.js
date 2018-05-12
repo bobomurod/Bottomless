@@ -3,20 +3,22 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 const request = require('request')
 const axios = require('axios')
+const bitcore = require('bitcore-lib')
+const EthereumBip44 = require('ethereum-bip44')
+const bitcore_ltc = require('bitcore-litecoin')
 
 // Pleace for jwtSignUser function 
 
 
 module.exports = {
 
-
     getCryptoPrice (req, res) {
-    axios.all([
-        axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
-        axios.get('https://api.coinmarketcap.com/v2/ticker/1027/'),
-        axios.get('https://api.coinmarketcap.com/v2/ticker/2/'),
-        axios.get('https://api.coinmarketcap.com/v2/ticker/1831/')
-    ]).then(axios.spread((btc, eth, ltc, bch) => {
+        axios.all([
+            axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
+            axios.get('https://api.coinmarketcap.com/v2/ticker/1027/'),
+            axios.get('https://api.coinmarketcap.com/v2/ticker/2/'),
+            axios.get('https://api.coinmarketcap.com/v2/ticker/1831/')
+        ]).then(axios.spread((btc, eth, ltc, bch) => {
         
            console.log( btc.data.data.quotes.USD.price);
            res.send({
@@ -38,7 +40,33 @@ module.exports = {
         .catch(error => {
             console.log(error)
         })
-    }
+    },
+
+    getNewBtcAddress (req, res) {
+        var privateKey = new bitcore.PrivateKey()
+        console.log(privateKey)
+        var address = privateKey.toAddress()
+        console.log(address)
+        res.send(address)
+    },
+
+    getNewEthAddress (req, res) {
+        var ethKey = bitcore.HDPrivateKey()
+        console.log(ethKey)
+        var address = new EthereumBip44(ethKey)
+        console.log(address.getAddress(0))
+        res.send(address.getAddress(0))
+    },
+
+    getNewLtcAddress (req, res) {
+        var privateKey = new bitcore_ltc.PrivateKey()
+        console.log(privateKey)
+        var address = privateKey.toAddress()
+        console.log(address)
+        res.send(address)
+    },
+
+    
 }
 
     // axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
