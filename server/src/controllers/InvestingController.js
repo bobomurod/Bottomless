@@ -7,28 +7,23 @@ const axios = require('axios')
 // Pleace for jwtSignUser function 
 
 
-var btcPrice = null
-var ethPrice = null
-
-
-
-
-
-
-
 module.exports = {
 
 
     getCryptoPrice (req, res) {
     axios.all([
         axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
-        axios.get('https://api.coinmarketcap.com/v2/ticker/1027/')
-    ]).then(axios.spread((response1, response2) => {
+        axios.get('https://api.coinmarketcap.com/v2/ticker/1027/'),
+        axios.get('https://api.coinmarketcap.com/v2/ticker/2/'),
+        axios.get('https://api.coinmarketcap.com/v2/ticker/1831/')
+    ]).then(axios.spread((btc, eth, ltc, bch) => {
         
-           console.log( response1.data.data.quotes.USD.price);
+           console.log( btc.data.data.quotes.USD.price);
            res.send({
-               BTC: response1.data.data.quotes.USD.price,
-               ETH: response2.data.data.quotes.USD.price
+               BTC: btc.data.data.quotes.USD.price,
+               ETH: eth.data.data.quotes.USD.price,
+               LTC: ltc.data.data.quotes.USD.price,
+               BCH: bch.data.data.quotes.USD.price
            })
         })).catch(error => {
             console.log(error);
@@ -44,7 +39,7 @@ module.exports = {
             console.log(error)
         })
     }
-
+}
 
     // axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
     // .then(response => {
@@ -61,9 +56,9 @@ module.exports = {
 // axios.all([
 //   axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
 //   axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2017-08-02')
-// ]).then(axios.spread((response1, response2) => {
-//   console.log(response1.data);
-//   console.log(response2.data.url);
+// ]).then(axios.spread((btc, eth) => {
+//   console.log(btc.data);
+//   console.log(eth.data.url);
 // })).catch(error => {
 //   console.log(error);
 // });
@@ -136,4 +131,3 @@ module.exports = {
     //     })
     //     console.log(ethPrice)
     // 
-}
