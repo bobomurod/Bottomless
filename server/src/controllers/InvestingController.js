@@ -1,3 +1,4 @@
+
 const {User} = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
@@ -44,10 +45,12 @@ module.exports = {
 
     getNewBtcAddress (req, res) {
         var privateKey = new bitcore.PrivateKey()
-        console.log(privateKey)
-        var address = privateKey.toAddress()
+        var publicKey = bitcore.PublicKey(privateKey)
+        console.log("this is private key  " + privateKey)
+        console.log("this is public key  " + publicKey)
+        address = new bitcore.Address(publicKey, 'testnet')
         console.log(address)
-        res.send(address)
+        res.send(address.toString())
     },
 
     getNewEthAddress (req, res) {
@@ -63,8 +66,22 @@ module.exports = {
         console.log(privateKey)
         var address = privateKey.toAddress()
         console.log(address)
-        res.send(address)
+        res.send(address.toString())
     },
+
+   async getBtcBalance (req, res) {
+        axios.get('https://testnet.blockchain.info/rawaddr/mg32ZVLUv423Fc3wLLfPHqkXs36YMSb7wY')
+        .then(response => {
+            res.send({
+                'address' : response.data.address,
+                'balance' : response.data.final_balance 
+            })
+           
+        })
+        .catch (error => {
+            res.send(error);
+        })
+    }
 
     
 }

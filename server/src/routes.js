@@ -33,6 +33,9 @@ module.exports = (app) => {
   app.post('/dashboard/newLtcAddress',
   InvestingController.getNewLtcAddress)
 
+  app.post('/dashboard/btcBalance',
+  InvestingController.getBtcBalance)
+
   app.post('/getbalance',
   InvestingController.getBtcAddressBalance)
 
