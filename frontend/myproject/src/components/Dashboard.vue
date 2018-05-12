@@ -23,6 +23,9 @@
       </li>
     </ul>
     <h2>Ecosystem</h2>
+    <br>
+    <h2>{{priceView}}</h2>
+    <br>
     <ul>
       <li>
         <a
@@ -68,14 +71,20 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'This is fucking Dashboard'
+      msg: 'This is fucking Dashboard',
+      priceView: null
     }
+  },
+  created () {
+    this.getBitcoinPrice()
   },
   methods: {
   async getBitcoinPrice () {
     try {
     const response = await InvestingService.getBitcoinPrice()
-    console.log(response.data)
+    
+    console.log(response.data.BTC)
+    this.priceView = response.data.BTC
   } catch (err) {
     console.log(err)
   }
