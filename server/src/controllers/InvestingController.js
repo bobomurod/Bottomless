@@ -19,8 +19,7 @@ var ethPrice = null
 module.exports = {
 
 
-    getCryptoPrice (req, res) 
-    {
+    getCryptoPrice (req, res) {
     axios.all([
         axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
         axios.get('https://api.coinmarketcap.com/v2/ticker/1027/')
@@ -34,7 +33,28 @@ module.exports = {
         })).catch(error => {
             console.log(error);
         });
+    },
+
+    getBtcAddressBalance (req, res) {
+        axios.get('https://blockchain.info/rawaddr/1Jk7pJqNVFpK1rCW2oKsnXsdLZaJgmYbWQ')
+        .then(response => {
+            console.log(response.data.final_balance)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
+
+
+    // axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+    // .then(response => {
+    //   console.log(response.data.url);
+    //   console.log(response.data.explanation);
+    // })
+    // .catch(error => {
+    //   console.log(error);
+    // });
+    
 
     // var axios = require('axios');
  
@@ -115,7 +135,5 @@ module.exports = {
     //         ETH : ethPrice
     //     })
     //     console.log(ethPrice)
-    // }
-
-
+    // 
 }

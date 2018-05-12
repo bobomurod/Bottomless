@@ -24,6 +24,9 @@ module.exports = (app) => {
   app.post('/dashboard',
   InvestingController.getCryptoPrice)
 
+  app.post('/getbalance',
+  InvestingController.getBtcAddressBalance)
+
   // app.post('/profile',
   // AuthenticationController.profileEdit)
   
