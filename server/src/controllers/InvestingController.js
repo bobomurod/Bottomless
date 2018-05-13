@@ -6,7 +6,7 @@ const request = require('request')
 const axios = require('axios')
 const bitcore = require('bitcore-lib')
 const EthereumBip44 = require('ethereum-bip44')
-const bitcore_ltc = require('bitcore-litecoin')
+const litecore = require('litecore-lib')
 
 // Pleace for jwtSignUser function 
 
@@ -62,9 +62,11 @@ module.exports = {
     },
 
     getNewLtcAddress (req, res) {
-        var privateKey = new bitcore_ltc.PrivateKey()
-        console.log(privateKey)
-        var address = privateKey.toAddress()
+        var privateKey = new litecore.PrivateKey()
+        var publicKey = litecore.PublicKey(privateKey)
+        console.log("This is Litecoin private key " + privateKey)
+        console.log("This is public key " + publicKey)
+        var address = new litecore.Address(publicKey, 'testnet')
         console.log(address)
         res.send(address.toString())
     },
