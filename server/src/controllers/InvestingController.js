@@ -7,6 +7,7 @@ const axios = require('axios')
 const bitcore = require('bitcore-lib')
 const EthereumBip44 = require('ethereum-bip44')
 const litecore = require('litecore-lib')
+const Web3 = require('web3')
 
 // Pleace for jwtSignUser function 
 
@@ -72,17 +73,46 @@ module.exports = {
     },
 
    async getBtcBalance (req, res) {
-        axios.get('https://testnet.blockchain.info/rawaddr/mg32ZVLUv423Fc3wLLfPHqkXs36YMSb7wY')
+        axios.get('https://chain.so/api/v2/get_address_balance/BTCTEST/'+req.body.address+'/1')
         .then(response => {
             res.send({
-                'address' : response.data.address,
-                'balance' : response.data.final_balance 
+                'address' : response.data.data.address,
+                'balance' : response.data.data.confirmed_balance 
             })
            
         })
         .catch (error => {
             res.send(error);
         })
+    },
+
+    async getLtcBalance (req, res) {
+        axios.get('https://chain.so/api/v2/get_address_balance/LTCTEST/'+req.body.address+'/1')
+        .then(response => {
+            console.log(response.data.data.confirmed_balance);
+            res.send({
+                "address": response.data.data.address,
+                "balance": response.data.data.confirmed_balance
+            })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    },
+
+    async getEthBalance (req, res) {
+        console.log("wait please")
+        web3 = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/B0QFpfZKeuLFhhW3zZeu'))
+        web3.eth.getBalance(req.body.address).then(result => {
+            console.log(result);
+            res.send({
+                "address": req.body.address,
+                "balance": result
+            })
+        })
+        .catch (error => {
+            console.log(error)
+        }) 
     }
 
     
