@@ -43,13 +43,14 @@ module.exports = {
             console.log(error)
         })
     },
-
+    // tpubDCYrhP2jBmwBoSEkiXNtqmk3SpQsLrXez3wN8YGh1LXBvJ3Y2Lg16MZCHsMnDD2Y8pkxBUHYeTQqj3S5QxnmXiEkznECdhta5xGsmL7ZA3u
     getNewBtcAddress (req, res) {
         var privateKey = new bitcore.PrivateKey()
         var publicKey = bitcore.PublicKey(privateKey)
         console.log("this is private key  " + privateKey)
         console.log("this is public key  " + publicKey)
-        address = new bitcore.Address(publicKey, 'testnet')
+        var address = new bitcore.Address('tpubDCYrhP2jBmwBoSEkiXNtqmk3SpQsLrXez3wN8YGh1LXBvJ3Y2Lg16MZCHsMnDD2Y8pkxBUHYeTQqj3S5QxnmXiEkznECdhta5xGsmL7ZA3u', 'testnet');
+        // address = new bitcore.Address(publicKey, 'testnet')
         console.log(address)
         res.send(address.toString())
     },
