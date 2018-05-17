@@ -59,18 +59,18 @@ contract ERC20Basic {
 
 contract ERC20 is ERC20Basic {
     function allowance(address owner, address spender) public constant returns (uint256);
-    function transferFrom(address from, address to uint256 value) public returns (bool);
+    function transferFrom(address from, address to, uint256 value) public returns (bool);
     function approve(address spender, uint256 value) public returns (bool);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
 contract BasicToken is ERC20Basic {
-    using safeMath for uint256;
+    using SafeMath for uint256;
     mapping (address=>uint256) balances;
 
     function transfer(address _to, uint256 _value) public returns (bool) {
         require(_to != address(0));
-        require(_value <= balance[msg.sender]);
+        require(_value <= balances[msg.sender]);
 
         // SafeMath.sub не позволит отправить токенов если нет нужного кол-во на балансе
         balances[msg.sender] = balances[msg.sender].sub(_value);
@@ -79,17 +79,17 @@ contract BasicToken is ERC20Basic {
         return true;        
     }
 
-    function balanceOf(address _owner) public constant returns (uint 256 balance) {
+    function balanceOf(address _owner) public constant returns (uint256 balance) {
         return balances[_owner];
     }
 }
 
-contract StandartToken is ERC20, BasicToken {
+contract StandardToken is ERC20, BasicToken {
     mapping (address =>mapping (address=>uint256)) internal allowed;
     
     function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {
         require(_to != address(0));
-        require(_value <= balances[from]);
+        require(_value <= balances[_from]);
         require(_value <= allowed[_from][msg.sender]);
         balances[_from] = balances[_from].sub(_value);
         balances[_to] = balances[_to].add(_value);
@@ -125,6 +125,7 @@ contract StandartToken is ERC20, BasicToken {
     return true;
   }
 }
+
 
 contract BurnableToken is StandardToken {
 
