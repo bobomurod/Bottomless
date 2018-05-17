@@ -51,3 +51,31 @@ contract ERC20Basic {
     function transfer(address to, uint256 value) public returns (bool);
     event Transfer(address indexed from, address indexed to, uint256 value);
 }
+
+/**
+* @title ERC20 интерфэйс
+* @dev смотрите в гите 
+ */
+
+contract ERC20 is ERC20Basic {
+    function allowance(address owner, address spender) public constant returns (uint256);
+    function transferFrom(address from, address to uint256 value) public returns (bool);
+    function approve(address spender, uint256 value) public returns (bool);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+contract BasicToken is ERC20Basic {
+    using safeMath for uint256;
+    mapping (address=>uint256) balances;
+
+    function transfer(address _to, uint256 _value) public returns (bool) {
+        require(_to != address(0));
+        require(_value <= balance[msg.sender]);
+
+        // SafeMath.sub не позволит отправить токенов если нет нужного кол-во на балансе
+        balances[msg.sender] = balances[msg.sender].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        Transfer(msg.sender, _to, _value);
+        return true;        
+    }
+}
