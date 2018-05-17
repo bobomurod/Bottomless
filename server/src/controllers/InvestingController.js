@@ -49,7 +49,8 @@ module.exports = {
         var publicKey = bitcore.PublicKey(privateKey)
         console.log("this is private key  " + privateKey)
         console.log("this is public key  " + publicKey)
-        var address = new bitcore.Address('tpubDCYrhP2jBmwBoSEkiXNtqmk3SpQsLrXez3wN8YGh1LXBvJ3Y2Lg16MZCHsMnDD2Y8pkxBUHYeTQqj3S5QxnmXiEkznECdhta5xGsmL7ZA3u', 'testnet');
+        var tpub = 'tpubDCYrhP2jBmwBoSEkiXNtqmk3SpQsLrXez3wN8YGh1LXBvJ3Y2Lg16MZCHsMnDD2Y8pkxBUHYeTQqj3S5QxnmXiEkznECdhta5xGsmL7ZA3u'
+        var address = new bitcore.Address(tpub, 'testnet');
         // address = new bitcore.Address(publicKey, 'testnet')
         console.log(address)
         res.send(address.toString())
