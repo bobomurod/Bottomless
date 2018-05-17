@@ -78,4 +78,23 @@ contract BasicToken is ERC20Basic {
         Transfer(msg.sender, _to, _value);
         return true;        
     }
+
+    function balanceOf(address _owner) public constant returns (uint 256 balance) {
+        return balances[_owner];
+    }
+}
+
+contract StandartToken is ERC20, BasicToken {
+    mapping (address =>mapping (address=>uint256)) internal allowed;
+    
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {
+        require(_to != address(0));
+        require(_value <= balances[from]);
+        require(_value <= allowed[_from][msg.sender]);
+        balances[_from] = balances[_from].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value);
+        Transfer(_from, _to, _value);
+        return true;
+    }
 }
