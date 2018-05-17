@@ -147,4 +147,16 @@ contract BurnableToken is StandardToken {
     }
 }
 
+contract DimaCoin is BurnableToken {
+    event DimaCoinHasDeployed(uint time);
+    string public constant name = "dimacoin";
+    string public constant sympol = "dmc";
+    uint8 public constant decimals = 18;
+    uint256 public constant INITIAL_SUPPLY = 1000000 * (10 ** uint256(decimals));
 
+    function DimaCoin() {
+        totalSupply = INITIAL_SUPPLY;
+        balances[msg.sender] = INITIAL_SUPPLY;
+        DimaCoinHasDeployed(now);
+    }
+}
