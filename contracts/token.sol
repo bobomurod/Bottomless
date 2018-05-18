@@ -161,3 +161,5 @@ contract DimaCoin is BurnableToken {
         DimaCoinHasDeployed(now);
     }
 }
+
+// address on rinkeby 0xb9040bb60f1b918003223f846bbfbbdd3a3cb31d
