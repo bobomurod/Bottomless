@@ -11,7 +11,6 @@ const Web3 = require('web3')
 
 // Pleace for jwtSignUser function 
 
-
 module.exports = {
 
     getCryptoPrice (req, res) {
@@ -115,9 +114,7 @@ module.exports = {
         .catch (error => {
             console.log(error)
         }) 
-    }
-
-    
+    }    
 }
 
     // axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
