@@ -21,26 +21,34 @@ module.exports = (app) => {
   app.post('/login',
   AuthenticationController.login)
 
+
   app.post('/dashboard',
   InvestingController.getCryptoPrice)
+
 
   app.post('/dashboard/newBtcAddress',
   InvestingController.getNewBtcAddress)
 
+
   app.post('/dashboard/newEthAddress',
   InvestingController.getNewEthAddress)
+
 
   app.post('/dashboard/newLtcAddress',
   InvestingController.getNewLtcAddress)
 
+
   app.post('/dashboard/btcBalance',
   InvestingController.getBtcBalance)
+
 
   app.post('/dashboard/ltcBalance',
   InvestingController.getLtcBalance)
 
+
   app.post('/dashboard/ethBalance',
   InvestingController.getEthBalance)
+  
 
   app.post('/getbalance',
   InvestingController.getBtcAddressBalance)
