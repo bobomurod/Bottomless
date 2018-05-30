@@ -48,7 +48,7 @@ module.exports = (app) => {
 
   app.post('/dashboard/ethBalance',
   InvestingController.getEthBalance)
-  
+
 
   app.post('/getbalance',
   InvestingController.getBtcAddressBalance)
