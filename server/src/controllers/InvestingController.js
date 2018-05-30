@@ -14,6 +14,7 @@ const Web3 = require('web3')
 module.exports = {
 
     getCryptoPrice (req, res) {
+        
         axios.all([
             axios.get('https://api.coinmarketcap.com/v2/ticker/1/'),
             axios.get('https://api.coinmarketcap.com/v2/ticker/1027/'),
@@ -22,6 +23,7 @@ module.exports = {
         ]).then(axios.spread((btc, eth, ltc, bch) => {
         
            console.log( btc.data.data.quotes.USD.price);
+
            res.send({
                BTC: btc.data.data.quotes.USD.price,
                ETH: eth.data.data.quotes.USD.price,
