@@ -1,6 +1,7 @@
 const Promise = require('bluebird')
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
 
+
 function hashPassword(user, options) {
   const SALT_FACTOR = 2
 
@@ -14,6 +15,7 @@ function hashPassword(user, options) {
     user.setDataValue('password', hash)
   })
 }
+
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
